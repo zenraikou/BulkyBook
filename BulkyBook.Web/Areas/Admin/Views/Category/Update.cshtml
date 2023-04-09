@@ -1,0 +1,25 @@
+﻿@model Category;
+
+@{
+    ViewData["Title"] = "Edit Category";
+}
+
+<form method="post">
+    <div>
+        <label asp-for="Name"></label>
+        <input asp-for="Name" type="text" />
+        <span asp-validation-for="Name"></span>
+    </div>
+    <div>
+        <label asp-for="DisplayOrder"></label>
+        <input asp-for="DisplayOrder" type="text" />
+        <span asp-validation-for="DisplayOrder"></span>
+    </div>
+    <button type="submit">Edit Category</button>
+</form>
+<a asp-action="List">Category List</a>
+
+@section Scripts
+{
+<partial name="_ValidationScriptsPartial" />
+}

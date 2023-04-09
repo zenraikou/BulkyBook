@@ -1,0 +1,84 @@
+﻿@model IEnumerable<Product>;
+
+@{
+    ViewData["Title"] = "Product List";
+}
+
+<a asp-action="Upsert">Create Product</a>
+<table>
+    <thead>
+        <tr>
+            <th>
+                Cover
+            </th>
+            <th>
+                Title
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                ISBN
+            </th>
+            <th>
+                Author
+            </th>
+            <th>
+                ListPrice
+            </th>
+            <th>
+                Price50
+            </th>
+            <th>
+                Price100
+            </th>
+            <th>
+                Category
+            </th>
+            <th>
+                Cover Type
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach(var product in Model)
+    {
+    <tr>
+        <td>
+            <img src="@product.ImgUrl" width="128">
+        </td>
+        <td>
+            @product.Title
+        </td>
+        <td>
+            @product.Description
+        </td>
+        <td>
+            @product.ISBN
+        </td>
+        <td>
+            @product.Author
+        </td>
+        <td>
+            @product.ListPrice
+        </td>
+        <td>
+            @product.Price50
+        </td>
+        <td>
+            @product.Price100
+        </td>
+        <td>
+            @product.Category
+        </td>
+        <td>
+            @product.CoverType
+        </td>
+    </tr>
+    <a asp-action="Upsert" asp-route-id="@product.Id">Edit</a>
+    <form method="post" asp-action="Delete" asp-route-id="@product.Id">
+        <button type="submit">Delete</button>
+    </form>
+    }
+    </tbody>
+</table>

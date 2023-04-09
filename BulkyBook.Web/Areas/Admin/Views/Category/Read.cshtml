@@ -1,0 +1,15 @@
+﻿@model Category;
+
+@{
+    ViewData["Title"] = "Read";
+}
+
+<div>
+    <div>
+        @Model.Name
+    </div>
+    <div>
+        @Model.DisplayOrder
+    </div>
+</div>
+<a asp-action="List">Category List</a>

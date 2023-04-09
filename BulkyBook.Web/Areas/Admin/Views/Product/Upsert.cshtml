@@ -1,0 +1,85 @@
+﻿@model BulkyBook.Models.ViewModels.ProductVM;
+
+@{
+    ViewData["Title"] = "Product";
+}
+
+<form method="post" enctype="multipart/form-data">
+    <input asp-for="Product.ImgUrl" hidden />
+    <div>
+        <h2>@(Model.Product.Id != 0 ? "Update" : "Create")</h2>
+        <hr />
+    </div>
+    <div>
+        <label asp-for="Product.Title"></label>
+        <input asp-for="Product.Title" type="text" value="@Model.Product.Title" />
+        <span asp-validation-for="Product.Title"></span>
+    </div>
+    <div>
+        <label asp-for="Product.Description"></label>
+        <textarea asp-for="Product.Description">@Model.Product.Description</textarea>
+        <span asp-validation-for="Product.Description"></span>
+    </div>
+    <div>
+        <label asp-for="Product.ISBN"></label>
+        <input asp-for="Product.ISBN" type="text" value="@Model.Product.ISBN" />
+        <span asp-validation-for="Product.ISBN"></span>
+    </div>
+    <div>
+        <label asp-for="Product.Author"></label>
+        <input asp-for="Product.Author" type="text" value="@Model.Product.Author" />
+        <span asp-validation-for="Product.Author"></span>
+    </div>
+    <div>
+        <label asp-for="Product.ListPrice"></label>
+        <input asp-for="Product.ListPrice" type="text" value="@Model.Product.ListPrice" />
+        <span asp-validation-for="Product.ListPrice"></span>
+    </div>
+    <div>
+        <label asp-for="Product.Price"></label>
+        <input asp-for="Product.Price" type="text" value="@Model.Product.Price" />
+        <span asp-validation-for="Product.Price"></span>
+    </div>
+    <div>
+        <label asp-for="Product.Price50"></label>
+        <input asp-for="Product.Price50" type="text" value="@Model.Product.Price50" />
+        <span asp-validation-for="Product.Price50"></span>
+    </div>
+    <div>
+        <label asp-for="Product.Price100"></label>
+        <input asp-for="Product.Price100" type="text" value="@Model.Product.Price100" />
+        <span asp-validation-for="Product.Price100"></span>
+    </div>
+    <div>
+        <label asp-for="Product.ImgUrl"></label>
+        <input type="file" name="file" id="uploadBox" />
+    </div>
+    <div>
+        <label asp-for="Product.CategoryId"></label>
+        <select asp-for="Product.CategoryId" asp-items="@Model.Categories">
+            <option disabled selected>--Select Category--</option>
+        </select>
+        <span asp-validation-for="Product.CategoryId"></span>
+    </div>
+    <div>
+        <label asp-for="Product.CoverTypeId"></label>
+        <select asp-for="Product.CoverTypeId" asp-items="@Model.CoverTypes">
+            <option disabled selected>--Select Cover Type--</option>
+        </select>
+        <span asp-validation-for="Product.CoverTypeId"></span>
+    </div>
+    @if (Model.Product.Id != 0)
+    {
+        <button type="submit">Update Product</button>
+    }
+    else
+    {
+         <button type="submit">Create Product</button>
+    }
+</form>
+<a asp-action="List">Product List</a>
+
+@section Scripts
+{
+<partial name="_ValidationScriptsPartial" />
+}

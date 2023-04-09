@@ -1,0 +1,20 @@
+﻿@model CoverType;
+
+@{
+    ViewData["Title"] = "Create Cover Type";
+}
+
+<form method="post" asp-action="Create">
+    <div>
+        <label asp-for="Name"></label>
+        <input asp-for="Name" type="text"/>
+        <span asp-validation-for="Name"></span>
+    </div>
+    <button type="submit">Create Cover Type</button>
+</form>
+<a asp-action="List">Cover Type List</a>
+
+@section Scripts
+{
+<partial name="_ValidationScriptsPartial" />
+}

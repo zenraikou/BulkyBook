@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Category>;
+@using System.Reflection;
+@using System.ComponentModel;
+
+@{
+    ViewData["Title"] = "Category List";
+}
+
+<a asp-action="Create">Create Category</a>
+<table>
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Display Order
+            </th>
+            <th>
+                Created On
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var category in Model)
+        {
+        <tr>
+
+            <td>
+                @category.Id
+            </td>
+            <td>
+                @category.Name
+            </td>
+            <td>
+                @category.DisplayOrder
+            </td>
+            <td>
+                @category.Timestamp
+            </td>
+            <td>
+                <a asp-action="Update" asp-route-id="@category.Id">Edit</a>
+            </td>
+            <td>
+                <form method="post" asp-action="Delete" asp-route-id="@category.Id">
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
